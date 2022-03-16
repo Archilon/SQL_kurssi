@@ -51,20 +51,24 @@ class Reminder extends React.Component {
    }
 
    deleteReminder = (id) => {
-    console.log("Delete'd note")
+    
     return() => {
+    console.log("Delete'd note")
     const url = `http://localhost:3001/reminders/${id}`
-    window.confirm("Are you sure you want to delete this reminder?") ?
-     axios
-     .delete(url)
-     (reminderService
-      .getAll()
-      .then(reminders => {
-        this.setState({ reminders })
-      })):
-     window.alert("Reminder was deleted.");
-   } 
+    if (window.confirm("Are you sure you want to delete this reminder?")){
+      axios
+      .delete(url)
+      alert("Reminder was deleted.");
+      (reminderService
+        .getAll()
+        .then(reminders => {
+          this.setState({ reminders })
+        })
+        
+        )
+   } }
   }
+
   render() {
     return (
       <div>

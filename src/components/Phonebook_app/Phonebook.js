@@ -3,26 +3,34 @@ import Entries from './Entries'
 import PhoneTitle from './PhoneTitle'
 
 
+export const phonebook = {
+  name: 'Superadvanced web phonebook app',
+  contacts: [
+  {
+    name: 'John Doe',
+    phonenumber: '358401234567',
+    id: 0,
+  },
+  {
+    name: 'Jane Doe',
+    phonenumber: '44551234567',
+    id: 1
+  },
+  {
+    name: 'Foo bar',
+    phonenumber: '000',
+    id: 2
+  },
+  {
+    name:'testing add-more',
+    phonenumber: '123456789',
+    id: 3
+  }
+  ]
+}
+
 const Phonebook = () => {
   
-  const phonebook = {
-    name: 'Superadvanced web phonebook app',
-    contacts: [
-    {
-      name: 'John Doe',
-      phonenumber: '358401234567'
-    },
-    {
-      name: 'Jane Doe',
-      phonenumber: '44551234567'
-    },
-    {
-      name: 'Foo bar',
-      phonenumber: '000'
-    }
-    ]
-
-  }
 
   var result = phonebook.contacts.length;
 

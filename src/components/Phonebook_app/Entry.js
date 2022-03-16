@@ -1,20 +1,12 @@
-import React from "react"
-import './entry.css';
+import React from 'react'
 
-
-class Entry extends React.Component{
-  render(){
-    return(
-      <table>
-          <tbody>
-          <tr>
-              <td>Name: {this.props.name}</td>
-              <td>Phonenumber: {this.props.phone}</td>
-          </tr>
-          </tbody>
-      </table>
-    )
-  }
+const Entry = ({name, number}) => {
+  return (
+    <tr>
+      <td>Name: {name}</td>
+      <td>Number: {number}</td>
+    </tr>
+  )
 }
 
 export default Entry

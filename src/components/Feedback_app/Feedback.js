@@ -13,7 +13,7 @@ const Feedback = (props) => {
   var [neutral, setNeutral] = useState(0)
   var [poor, setPoor] = useState(0)
   var percent = (good/(good+neutral+poor)*100||0)
-
+  var average =((good-poor)/(good+neutral+poor)||0)
   const Statistics = () =>
 {
   return (
@@ -39,11 +39,11 @@ const Feedback = (props) => {
         </tr>
         <tr>
           <td>percent</td>
-          <td>{percent}%</td>
+          <td>{Math.floor(percent * 100) / 100}%</td>
         </tr>
         <tr>
-          <td>-</td>
-          <td>-</td>
+          <td>average</td>
+          <td>{Math.floor(average * 100) / 100}</td>
         </tr>
       </tbody>
     </table>

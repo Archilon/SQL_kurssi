@@ -1,3 +1,9 @@
 {
-  "reminders": []
+  "reminders": [
+    {
+      "note": "Testing shit out",
+      "timestamp": "2022-03-16T10:50",
+      "id": 1
+    }
+  ]
 }

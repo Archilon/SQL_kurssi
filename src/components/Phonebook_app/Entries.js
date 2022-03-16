@@ -1,17 +1,19 @@
 
-import React from "react"
+import React from 'react'
 import Entry from "./Entry"
+import { phonebook } from './Phonebook'
+import './entry.css';
 
-class Entries extends React.Component{
-  render(){
-    return(
-      <div>
-        <Entry name={this.props.contacts[0].name} phone={this.props.contacts[0].phonenumber}/>
-        <Entry name={this.props.contacts[1].name} phone={this.props.contacts[1].phonenumber}/>
-        <Entry name={this.props.contacts[2].name} phone={this.props.contacts[2].phonenumber}/>
-      </div>
-    )   
-  }
+const Entries = () => {
+  return (
+      <table>
+        <tbody>
+        {
+          phonebook.contacts.map(x => <Entry key={x.id} id={x.id} name={x.name} number={x.phonenumber} />)
+        }
+        </tbody>
+      </table>
+  )
 }
 
 export default Entries
