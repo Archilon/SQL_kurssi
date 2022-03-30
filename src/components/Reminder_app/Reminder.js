@@ -5,7 +5,7 @@ import reminderService from '../../Services/Reminders.js'
 class Reminder extends React.Component {
   constructor(props) {
     super(props)
-    const remindersURL = axios.get('http://localhost:3001/reminders')
+    const remindersURL = axios.get('https://sql-reminder.herokuapp.com/api/reminders')
     this.state = {
       reminders: [],
       newNote: '',
@@ -28,7 +28,7 @@ class Reminder extends React.Component {
         timestamp: this.state.newTime,
       } 
     axios
-    .post('http://localhost:3001/reminders', newObject)
+    .post('https://sql-reminder.herokuapp.com/api/reminders', newObject)
     .then(response => {
       this.setState({
         reminders: this.state.reminders.concat(response.data),
@@ -54,7 +54,7 @@ class Reminder extends React.Component {
     
     return() => {
     console.log("Delete'd note")
-    const url = `http://localhost:3001/reminders/${id}`
+    const url = `https://sql-reminder.herokuapp.com/api/reminders/${id}`
     if (window.confirm("Are you sure you want to delete this reminder?")){
       axios
       .delete(url)
