@@ -40,3 +40,20 @@
     ]
   }
 }
+<<<<<<< HEAD
+  }
+=======
+  },
+  "description": "This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Archilon/SQL_kurssi.git"
+  },
+  "author": "Jesse Isokääntä",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Archilon/SQL_kurssi/issues"
+  },
+  "homepage": "https://github.com/Archilon/SQL_kurssi#readme"
+>>>>>>> 427c56c19cc7dcd9ad16e9c4be7d5d52bea3994b
