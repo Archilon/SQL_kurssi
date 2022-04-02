@@ -5,10 +5,10 @@ import reminderService from '../../Services/Reminders.js'
 class Reminder extends React.Component {
   constructor(props) {
     super(props)
-    const remindersURL = axios.get('http://localhost:3001/reminders')
+
     this.state = {
       reminders: [],
-      newNote: '',
+      newName: '',
       newTime: ''
     }
   }
@@ -22,26 +22,25 @@ class Reminder extends React.Component {
   }
    addReminder = (event) =>{
        event.preventDefault()
-       console.log("Add note")
+       console.log("Added new note")
        const newObject = {
-        note: this.state.newNote,
+        name: this.state.newName,
         timestamp: this.state.newTime,
       } 
     axios
-    .post('http://localhost:3001/reminders', newObject)
+    .post('https://sql-reminder.herokuapp.com/api/reminders', newObject)
     .then(response => {
       this.setState({
         reminders: this.state.reminders.concat(response.data),
-        newNote: '',
+        newName: '',
         newTime: ''
       })
     })
 }
 
-   handleNoteChange = (event) => {
+   handleNameChange = (event) => {
     console.log(event.target.value)
-    console.log("New note")
-    this.setState({newNote: event.target.value})
+    this.setState({newName: event.target.value})
    }
 
    handleTimeChange = (event) =>{
@@ -53,21 +52,17 @@ class Reminder extends React.Component {
    deleteReminder = (id) => {
     
     return() => {
-    console.log("Delete'd note")
-    const url = `http://localhost:3001/reminders/${id}`
-    if (window.confirm("Are you sure you want to delete this reminder?")){
-      axios
-      .delete(url)
-      alert("Reminder was deleted.");
-      (reminderService
-        .getAll()
-        .then(reminders => {
-          this.setState({ reminders })
-        })
-        
-        )
-   } }
-  }
+      const url = `https://sql-reminder.herokuapp.com/api/reminders/${id}`
+        if (window.confirm("Are you sure you want to delete this reminder?")){
+          axios
+          .delete(url)
+          alert("Reminder was deleted.");
+          (reminderService
+            .getAll()
+            .then(reminders => {
+              this.setState({ reminders })
+            }))
+      }}}
 
   render() {
     return (
@@ -75,7 +70,7 @@ class Reminder extends React.Component {
         <h2><u>Add Reminder</u></h2>
         <form onSubmit={this.addReminder}>
         <div>
-          <b>Note:</b> <input value={this.state.newNote} onChange={this.handleNoteChange} />
+          <b>Note:</b> <input value={this.state.newName} onChange={this.handleNameChange} />
         </div>
         <div>
           <b>Time:</b> <input type="datetime-local" value={this.state.newTime} onChange={this.handleTimeChange} />
@@ -88,7 +83,7 @@ class Reminder extends React.Component {
         {this.state.reminders.map(reminders => { return (
             <div key={reminders.id}>
               <p>{reminders.timestamp} &emsp; 
-                  {reminders.note}&emsp;
+                  {reminders.name}&emsp;
               <button onClick={this.deleteReminder(reminders.id)}>
                 Delete
               </button></p>

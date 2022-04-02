@@ -1,5 +1,5 @@
 import axios from 'axios'
-const baseUrl = 'http://localhost:3001/reminders'
+const baseUrl = 'https://sql-reminder.herokuapp.com/api/reminders'
 
 const getAll = () => {
   const request = axios.get(baseUrl).catch(error => console.log(error.request));
